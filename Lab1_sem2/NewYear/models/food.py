@@ -1,12 +1,10 @@
-class Food:
-    def __init__(self, name):
-        self.__name = name
-        self.__ingredients = []
-        self.__status = "Не готов."
+from meal import Meal
 
-    @property
-    def name(self):
-        return self.__name
+class Food(Meal):
+    def __init__(self, name):
+        super().__init__(name)
+        self.__ingredients = []
+
 
     @property
     def ingredients(self):
@@ -14,14 +12,7 @@ class Food:
 
     @ingredients.setter
     def ingredients(self, ingr):
+        if not isinstance(ingr, list):
+            raise TypeError("Ингридиенты должны быть списком.")
         self.__ingredients = ingr
 
-    @property
-    def status(self):
-        return self.__status
-
-    def cook(self):
-        self.__status = "Приготовлено."
-
-    def serve(self):
-        self.__status = "Подано."

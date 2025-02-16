@@ -1,5 +1,6 @@
 from gift import Gift
 from food import Food
+from entertainment import Entertainment
 
 
 class Guest:
@@ -49,3 +50,31 @@ class Guest:
     @property
     def favoriteFood(self):
         return self.__favoriteFood
+
+
+    def bring_gift(self, gift: Gift):
+        if not isinstance(gift, Gift):
+            raise TypeError("Ожидается объект класса Gift.")
+
+        self.__gifts.append(gift)
+        return f"{self.__name} принес подарок: {gift.name}."
+
+    def participate_in_activity(self, activity: Entertainment):
+        if not isinstance(activity, Entertainment):
+            raise TypeError("Ожидается объект класса Entertainment.")
+
+        self.__activities.append(activity)
+        return f"{self.__name} участвует в {activity.name}."
+
+    def say_toast(self, text: str):
+        if not isinstance(text, str) or not text.strip():
+            raise ValueError("Тост должен быть непустой строкой.")
+
+        return f"{self.__name} говорит тост: \"{text}\"."
+
+    def receive_gift(self, gift: Gift):
+        if not isinstance(gift, Gift):
+            raise TypeError("Ожидается объект класса Gift.")
+
+        self.__gifts.append(gift)
+        return f"{self.__name} получил подарок: {gift.name}."

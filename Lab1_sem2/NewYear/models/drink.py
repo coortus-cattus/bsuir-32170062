@@ -1,7 +1,7 @@
 from meal import Meal
 
 class Drink(Meal):
-    def __init__(self, name: str, alcohol: bool, temperature: str):
+    def __init__(self, name: str, alcohol: bool, temperature: str) -> None:
         if not isinstance(alcohol, bool):
             raise TypeError("Поле '_alcohol' должно быть True или False.")
         if temperature not in ("холодный", "горячий"):

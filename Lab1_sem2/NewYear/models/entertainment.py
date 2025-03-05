@@ -54,3 +54,4 @@ class Entertainment:
 
     def __repr__(self) -> str:
         return f"Entertainment(name='{self._name}', host={self._host}, status='{self._status}')"
+

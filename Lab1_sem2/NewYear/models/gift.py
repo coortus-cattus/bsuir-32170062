@@ -1,16 +1,30 @@
 from guest import Guest
 
+
 class Gift:
-    def __init__(self, type: str) -> None:
-        self._type = type
+    def __init__(self, gift_type: str) -> None:
+        if not isinstance(gift_type, str):
+            raise TypeError("Тип подарка должен быть строкой.")
+
+        self._type = gift_type
         self._status = "Не упакован."
+
+    @property
+    def type(self) -> str:
+        return self._type
+
+    @property
+    def status(self) -> str:
+        return self._status
 
     def pack(self) -> None:
         self._status = "Упакован."
 
-    def give(self, guest : Guest) -> str:
-        self._status = "Подарен."
-        return (f"Подарок {self._type} подарен гостю {guest}")
+    def give(self, guest: Guest) -> None:
+        if not isinstance(guest, Guest):
+            raise TypeError("Гость должен быть объектом Guest.")
 
-    def __repr__(self):
-        return f"Gift(type='{self._type}'; status='{self._status}')"
+        self._status = "Подарен."
+
+    def __repr__(self) -> str:
+        return f"Gift(type='{self._type}', status='{self._status}')"
